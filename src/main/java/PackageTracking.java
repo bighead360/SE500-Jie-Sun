@@ -10,7 +10,7 @@ public class PackageTracking {
     public class TrackingStatus
     {
 
-
+        public String status;
         public String status_details;
         public String status_date;
         public Location location;
@@ -20,6 +20,7 @@ public class PackageTracking {
 
 
     public String carrier;
+
     public String tracking_number;
     public TrackingStatus tracking_status;
     public List<TrackingStatus> tracking_history;

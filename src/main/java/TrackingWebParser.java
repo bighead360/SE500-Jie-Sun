@@ -16,7 +16,7 @@ public class TrackingWebParser {
             System.out.println("wrong");
         }else
         {
-            System.out.println(trackingStatus.status_date);
+            System.out.println(trackingStatus.status_details);
         }
 
 
@@ -35,8 +35,8 @@ public class TrackingWebParser {
                 connect.header("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36");
                 Document document = connect.followRedirects(true).get();
 
-                packageTracking.carrier = document.select("#results-multi > div.panel.tracking-result.result-delivered.result-open > div > div.tracking-summary > div.tracking-progress.status-delivered > div.progress-indicator > h2").text();
-
+                packageTracking.carrier = document.select("#results-multi > div.panel.tracking-result.result-delivered.result-open > div > div.tracking-summary > div.tracking-progress.status-delivered > div.progress-indicator > h2").text().replace("\u00a0", "");
+                trackingStatus.status=document.select("#results-multi > div.panel.tracking-result.result-delivered.result-open > div > div.tracking-summary > div.tracking-progress.status-delivered > div.progress-indicator > h2").text();
 
                 String shortLocation = document.select("#tc-hits > tbody > tr:nth-child(1) > td.location > p").text().replace("\u00a0", "");
 
@@ -52,7 +52,7 @@ public class TrackingWebParser {
                 trackingStatus.status_date = ConvertTimeFormat.TimeParsertoJSON(shortDateTime);
 
 
-                String shortStatueDetail = document.select("#tc-hits > tbody > tr:nth-child(1)  > td.status > p > span").text().replace("\u00a0", "");
+                String shortStatueDetail = document.select("#tc-hits > tbody > tr.detail-wrapper.latest-detail > td.status > p.info-text.first").text().replace("\u00a0", " ");
                 trackingStatus.status_details = shortStatueDetail;
                 return trackingStatus;
             } catch (Exception e) {
