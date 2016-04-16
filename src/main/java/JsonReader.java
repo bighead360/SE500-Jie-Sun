@@ -1,11 +1,11 @@
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
-import java.nio.charset.Charset;
-
-import static java.lang.Boolean.*;
 
 /**
  * Created by jerrysun on 4/15/16.
@@ -32,12 +32,14 @@ public class JsonReader {
 
     public static void main(String[] args) throws IOException, JSONException {
         try {
-            JSONObject json = new JSONObject(readUrl("https://api.goshippo.com/v1/tracks/usps/9200199999977453249942"));
 
-            String status = (String) json.get("status");
-            System.out.println(status);
+            PackageTracking tracking = JSON.parseObject(readUrl("https://api.goshippo.com/v1/tracks/usps/9200199999977453249942"),PackageTracking.class);
+
+            System.out.println(tracking.tracking_number);
 
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
