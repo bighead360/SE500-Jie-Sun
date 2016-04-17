@@ -29,8 +29,6 @@ public class TrackingWebParserTest {
         Assert.assertEquals("TAPPAHANNOCK,VA22560",shortLocation);
 
 
-        Location locationc = ConvertLocationFormat.LocationParserConvertToObj(shortLocation);
-        System.out.println(locationc.state);
 
     }
 }
