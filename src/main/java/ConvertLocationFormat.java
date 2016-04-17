@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by jerrysun on 4/14/16.
+ * Created by <a href="davidsunjie.sun@gmail.com">jerrysun</a> on 4/14/16.
  */
 public class ConvertLocationFormat {
     public static void main(String[] args) throws IOException, ParseException {

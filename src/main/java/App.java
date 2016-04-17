@@ -3,7 +3,7 @@ import com.alibaba.fastjson.JSONException;
 import java.io.IOException;
 
 /**
- * Created by jerrysun on 4/16/16.
+ * Created by <a href="davidsunjie.sun@gmail.com">jerrysun</a> on 4/16/16.
  */
 public class App {
     public static void main(String[] args) throws IOException, JSONException, InterruptedException{
@@ -66,11 +66,8 @@ public class App {
 
     public static boolean CheckStatusSame(PackageTracking.TrackingStatus trackingStatusWebParser , PackageTracking.TrackingStatus trackingStatusJson){
 
-        if (trackingStatusWebParser.status.toLowerCase().equals(trackingStatusJson.status.toLowerCase())){
-            return true;
-        }
+        return trackingStatusWebParser.status.toLowerCase().equals(trackingStatusJson.status.toLowerCase());
 
-        return false;
     }
 
     public static boolean CheckStatustotalSame(PackageTracking.TrackingStatus trackingStatusWebParser , PackageTracking.TrackingStatus trackingStatusJson){
@@ -94,10 +91,7 @@ public class App {
 //        System.out.println(  ConvertStatusDetails.ConvertStatus(trackingStatusJson.status_details) );
 //        System.out.println( trackingStatusWebParser.status_details.toUpperCase() );
 
-        if (count == 2){
-            return true;
-        }
-        return false;
+        return count == 2;
 
     }
 
